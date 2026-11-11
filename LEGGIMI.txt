@@ -1,0 +1,24 @@
+﻿MANGA CLUB - come aprire il sito
+================================
+
+Sito statico in HTML, CSS e JavaScript: non serve nessun server o database.
+Si può pubblicare così com'è su GitHub Pages.
+
+Aprire il sito
+--------------
+- Doppio clic su index.html, oppure
+- con Live Server di VS Code, oppure
+- online con GitHub Pages: Settings > Pages > "Deploy from a branch",
+  ramo main, cartella / (root). Il sito sarà su
+  https://<utente>.github.io/<nome-repository>/
+
+Account di prova
+----------------
+Email:    demo@example.test
+Password: manga123
+
+Come funziona la demo
+---------------------
+Accesso, carrello, preferiti, voti con le stelle e recensioni sono salvati
+nel browser (localStorage): restano solo su quel computer e quel browser.
+"Procedi all'ordine" mostra un'anteprima: nessun ordine o pagamento reale.

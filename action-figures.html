@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Scopri le action figure ispirate ai personaggi manga, con prezzi indicativi e recensioni dimostrative.">
+  <title>Action figures — Manga Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ricerca-mobile.js" defer></script>
+  <script src="js/carrello.js" defer></script>
+  <script src="js/action-figures.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+  <script src="js/account-auth.js" defer></script>
+  <script src="js/account-modal.js" defer></script>
+  <script src="js/favorites.js" defer></script>
+  <script src="js/cover-fallback.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Manga Club, pagina iniziale"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><rect class="logo-tile" x="2" y="2" width="44" height="44" rx="8"/><path class="logo-page" d="M10 12h12v24H10zm16 0h12v24H26z"/><path class="logo-fold" d="M24 14v22"/></svg><span class="logo-type"><span class="logo-word">MANGA</span><span class="logo-subtitle">COMIC CLUB</span></span></a>
+      <p class="header-message">Storie da collezionare.<br><strong>Nuovi mondi da esplorare.</strong></p>
+      <div class="header-actions catalog-header-actions">
+        <label class="header-search">
+          <span class="visually-hidden">Cerca action figures</span>
+          <input id="figures-search" type="search" placeholder="Cerca nel catalogo…" autocomplete="off">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </label>
+        <button class="header-icon" type="button" data-open-account aria-label="Apri account" title="Apri account">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <button id="open-favorites" class="header-icon" type="button" aria-label="Preferiti, 0 prodotti" title="Preferiti" aria-haspopup="dialog" aria-controls="favorites-dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+          <span id="favorites-count" class="favorites-count" aria-hidden="true" hidden>0</span>
+        </button>
+        <button id="open-cart" class="header-icon cart-icon" type="button" aria-label="Carrello, 0 articoli" title="Carrello" aria-haspopup="dialog" aria-controls="cart-dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+          <span id="cart-count" class="cart-count" aria-hidden="true" hidden>0</span>
+        </button>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <div class="container">
+        <details class="mobile-menu">
+          <summary>Menu e ricerca <span aria-hidden="true">☰</span></summary>
+          <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="catalogo.html">Catalogo</a>
+            <a href="action-figures.html" aria-current="page">Figures</a>
+            <a href="giochi.html">Giochi</a>
+          </div>
+        </details>
+        <ul class="desktop-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalogo.html">Catalogo</a></li>
+          <li><a href="action-figures.html" aria-current="page">Figures</a></li>
+          <li><a href="giochi.html">Giochi</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+    <section class="catalog-intro figures-intro">
+      <div class="container catalog-intro-inner">
+        <div class="intro-art intro-figures" aria-hidden="true">
+          <img src="img/figures/ace-cutout-ai.webp" alt="" width="300" height="375">
+          <img src="img/figures/goku-cutout-ai.webp" alt="" width="300" height="375">
+          <img src="img/figures/gojo-cutout-ai.webp" alt="" width="300" height="375">
+        </div>
+        <h1>Personaggi da<br>tenere in posa.</h1>
+        <p>Una selezione dimostrativa di action figure ispirate ai mondi manga. Prezzi e modelli sono indicativi, senza vendita reale.</p>
+        <div class="catalog-meta"><span>4 FIGURE</span><span>RECENSIONI DEMO</span><span>COLLEZIONE DIMOSTRATIVA</span></div>
+      </div>
+    </section>
+
+    <section class="container catalog-section figures-section" aria-labelledby="figures-title">
+      <div class="catalog-heading">
+        <div><h2 id="figures-title">Action figures</h2></div>
+        <p class="catalog-note">Prezzi indicativi; immagini delle figure inserite per il catalogo dimostrativo.</p>
+      </div>
+      <p class="catalog-status" id="figures-search-status" role="status" aria-live="polite"></p>
+      <div class="catalog-grid figures-grid">
+        <article class="catalog-card product-card" data-product-id="figure-ace" data-maker="Banpresto" data-size="Circa 16 cm" data-description="Una figure dimostrativa ispirata a Portgas D. Ace, il pirata dal potere del fuoco. La posa dinamica e i colori caldi richiamano il suo spirito libero.">
+          <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Portgas D. Ace">
+            <img class="cover-image" src="img/figures/ace-cutout-ai.webp" alt="Action figure di Portgas D. Ace di One Piece" loading="lazy"><span class="badge">FIGURE</span>
+          </button>
+          <div class="product-info">
+            <p class="product-category">ONE PIECE · PIRATA</p>
+            <h3>Portgas D. Ace</h3>
+            <p class="format">Produttore: Banpresto</p>
+            <p class="price">39,90 €</p>
+            <div class="product-actions"><button class="add-button" type="button" aria-label="Aggiungi Portgas D. Ace al carrello">Aggiungi al carrello</button></div>
+          </div>
+        </article>
+        <article class="catalog-card product-card" data-product-id="figure-goku" data-maker="Bandai" data-size="Circa 18 cm" data-description="Una figure dimostrativa ispirata a Son Goku, pronta a entrare in azione. Una posa energica celebra il suo percorso da combattente e il desiderio di superare ogni limite.">
+          <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Son Goku">
+            <img class="cover-image" src="img/figures/goku-cutout-ai.webp" alt="Action figure di Son Goku in posa da combattimento" loading="lazy"><span class="badge">FIGURE</span>
+          </button>
+          <div class="product-info">
+            <p class="product-category">DRAGON BALL · COMBATTENTE</p>
+            <h3>Son Goku</h3>
+            <p class="format">Produttore: Bandai</p>
+            <p class="price">34,90 €</p>
+            <div class="product-actions"><button class="add-button" type="button" aria-label="Aggiungi Son Goku al carrello">Aggiungi al carrello</button></div>
+          </div>
+        </article>
+        <article class="catalog-card product-card" data-product-id="figure-naruto" data-maker="Banpresto" data-size="Circa 15 cm" data-description="Una figure dimostrativa ispirata a Naruto Uzumaki, con una posa che richiama la sua determinazione e il sogno di diventare Hokage.">
+          <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Naruto Uzumaki">
+            <img class="cover-image" src="img/figures/naruto-cutout-ai.webp" alt="Action figure di Naruto Uzumaki in posa ninja" loading="lazy"><span class="badge">FIGURE</span>
+          </button>
+          <div class="product-info">
+            <p class="product-category">NARUTO · NINJA</p>
+            <h3>Naruto Uzumaki</h3>
+            <p class="format">Produttore: Banpresto</p>
+            <p class="price">32,90 €</p>
+            <div class="product-actions"><button class="add-button" type="button" aria-label="Aggiungi Naruto Uzumaki al carrello">Aggiungi al carrello</button></div>
+          </div>
+        </article>
+        <article class="catalog-card product-card" data-product-id="figure-gojo" data-maker="Bandai" data-size="Circa 17 cm" data-description="Una figure dimostrativa ispirata a Satoru Gojo, raffigurato in una posa rilassata che lascia intuire la sua sicurezza e la sua forza fuori dal comune.">
+          <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Satoru Gojo">
+            <img class="cover-image" src="img/figures/gojo-cutout-ai.webp" alt="Action figure di Satoru Gojo di Jujutsu Kaisen" loading="lazy"><span class="badge">FIGURE</span>
+          </button>
+          <div class="product-info">
+            <p class="product-category">JUJUTSU KAISEN · STREGONE</p>
+            <h3>Satoru Gojo</h3>
+            <p class="format">Produttore: Bandai</p>
+            <p class="price">42,90 €</p>
+            <div class="product-actions"><button class="add-button" type="button" aria-label="Aggiungi Satoru Gojo al carrello">Aggiungi al carrello</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="manga-dialog figures-dialog" id="manga-dialog" aria-labelledby="manga-dialog-title">
+    <div class="manga-dialog-content">
+      <img class="manga-dialog-cover" id="manga-dialog-cover" alt="">
+      <div class="manga-dialog-copy">
+        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi dettagli">×</button>
+        <p class="catalog-label" id="manga-dialog-genre"></p>
+        <h2 id="manga-dialog-title"></h2>
+        <p class="catalog-price manga-dialog-price" id="manga-dialog-price"></p>
+        <p class="manga-dialog-description" id="manga-dialog-description"></p>
+        <details class="manga-dialog-specs">
+          <summary>Dettagli</summary>
+          <dl>
+            <div><dt>Dimensioni</dt><dd id="manga-dialog-dimensions"></dd></div>
+            <div><dt>Produttore</dt><dd id="manga-dialog-maker"></dd></div>
+          </dl>
+        </details>
+        <details class="manga-reviews">
+          <summary>Recensioni</summary>
+          <p class="manga-review-summary" id="manga-review-summary" aria-live="polite"></p>
+          <div class="manga-review-content">
+            <ul class="manga-review-list" id="manga-review-list"></ul>
+            <div class="manga-review-auth" id="manga-review-auth" hidden>
+              <p>Accedi al tuo account per lasciare una recensione o valutare questo prodotto.</p>
+              <button class="button button-primary" id="manga-review-login" type="button">Accedi</button>
+            </div>
+            <form class="manga-review-form" id="manga-review-form">
+              <label for="manga-review-name">Il tuo nome</label>
+              <input id="manga-review-name" name="name" type="text" maxlength="60" required autocomplete="name">
+              <fieldset>
+                <legend>La tua valutazione</legend>
+                <div class="manga-review-stars">
+                  <label><input type="radio" name="rating" value="1" required><span aria-hidden="true">★</span><span class="visually-hidden">1 stella</span></label>
+                  <label><input type="radio" name="rating" value="2"><span aria-hidden="true">★</span><span class="visually-hidden">2 stelle</span></label>
+                  <label><input type="radio" name="rating" value="3"><span aria-hidden="true">★</span><span class="visually-hidden">3 stelle</span></label>
+                  <label><input type="radio" name="rating" value="4"><span aria-hidden="true">★</span><span class="visually-hidden">4 stelle</span></label>
+                  <label><input type="radio" name="rating" value="5"><span aria-hidden="true">★</span><span class="visually-hidden">5 stelle</span></label>
+                </div>
+              </fieldset>
+              <label for="manga-review-text">La tua recensione</label>
+              <textarea id="manga-review-text" name="review" rows="3" maxlength="1000" required></textarea>
+              <p class="manga-review-status" id="manga-review-status" role="status" aria-live="polite"></p>
+              <button class="add-button" type="submit">Pubblica recensione</button>
+            </form>
+            <p class="manga-review-note">Recensioni dimostrative, salvate solo in questo browser.</p>
+          </div>
+        </details>
+        <div class="manga-dialog-actions">
+          <button class="add-button manga-dialog-cart" id="manga-dialog-cart" type="button" aria-label="Aggiungi questa figure al carrello" title="Aggiungi al carrello">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+          </button>
+        </div>
+        <div class="manga-dialog-cart-confirmation" id="manga-dialog-cart-confirmation" hidden>
+          <p id="manga-dialog-cart-message" role="status" aria-live="polite"></p>
+          <button id="manga-dialog-open-cart" type="button">Vai al carrello</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello">✕</button></div>
+    <p class="cart-disclaimer">Carrello dimostrativo: nessun ordine o pagamento reale.</p>
+    <div id="cart-items"></div>
+    <p class="cart-total">Totale: <strong id="cart-total">0,00 €</strong></p>
+    <div class="cart-actions">
+      <button id="empty-cart" type="button">Svuota carrello</button>
+      <button id="continue-cart" type="button">Continua gli acquisti</button>
+      <button id="checkout-cart" class="button button-primary" type="button">Procedi all'ordine</button>
+    </div>
+    <p id="cart-checkout-status" class="cart-checkout-status" role="status" aria-live="polite"></p>
+  </dialog>
+
+  <footer class="site-footer" id="chi-siamo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="logo" href="index.html" aria-label="Manga Club, pagina iniziale"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><rect class="logo-tile" x="2" y="2" width="44" height="44" rx="8"/><path class="logo-page" d="M10 12h12v24H10zm16 0h12v24H26z"/><path class="logo-fold" d="M24 14v22"/></svg><span class="logo-type"><span class="logo-word">MANGA</span><span class="logo-subtitle">COMIC CLUB</span></span></a>
+          <p>Il tuo spazio dedicato a manga, nuove storie e personaggi da collezionare.</p>
+        </div>
+        <nav class="footer-links" aria-label="Navigazione nel footer">
+          <h2 class="footer-title">Esplora</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Catalogo manga</a></li>
+            <li><a href="action-figures.html">Action figures</a></li>
+            <li><a href="giochi.html">Giochi</a></li>
+            <li><a href="account.html">Il tuo account</a></li>
+          </ul>
+        </nav>
+        <div class="footer-social">
+          <h2 class="footer-title">Seguici</h2>
+          <ul class="social-links" aria-label="Social network">
+            <li><a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)"><span>Instagram</span></a></li>
+            <li><a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (si apre in una nuova scheda)"><span>Facebook</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Manga Comic Club</p>
+        <p>Demo indipendente: prezzi indicativi, nessun acquisto o pagamento reale.</p>
+      </div>
+    </div>
+  </footer>
+  <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-dialog-title">
+    <section class="account-panel">
+      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso">✕</button>
+      <h2 id="account-dialog-title">Accedi</h2>
+      <p class="account-demo-note">Accesso demo: <strong>demo@example.test</strong> · password <strong>manga123</strong>. Non è una casella email reale.</p>
+      <form class="account-form" data-account-login>
+        <label for="header-login-email">Indirizzo email</label>
+        <input id="header-login-email" name="email" type="email" autocomplete="email" value="demo@example.test" required>
+        <label for="header-login-password">Password</label>
+        <input id="header-login-password" name="password" type="password" autocomplete="current-password" value="manga123" required>
+        <button class="button button-primary" type="submit">Accedi</button>
+        <p class="account-form-status" role="status" aria-live="polite" hidden></p>
+        <button class="button button-dark" type="button" data-account-logout hidden>Esci</button>
+      </form>
+    </section>
+  </dialog>
+  <div id="notification" class="notification" role="status" aria-live="polite">
+    <span id="notification-message"></span>
+    <button id="notification-cart-link" class="notification-cart-link" type="button" hidden>Vai al carrello</button>
+  </div>
+  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden>↑</button>
+</body>
+</html>

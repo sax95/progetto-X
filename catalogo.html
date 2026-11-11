@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Esplora il catalogo Manga Club: una selezione di manga, serie e volumi da scoprire.">
+  <title>Catalogo manga — Manga Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ricerca-mobile.js" defer></script>
+  <script src="js/carrello.js" defer></script>
+  <script src="js/catalogo.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+  <script src="js/account-auth.js" defer></script>
+  <script src="js/account-modal.js" defer></script>
+  <script src="js/favorites.js" defer></script>
+  <script src="js/cover-fallback.js" defer></script>
+  <script src="js/movimento.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Manga Club, pagina iniziale"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><rect class="logo-tile" x="2" y="2" width="44" height="44" rx="8"/><path class="logo-page" d="M10 12h12v24H10zm16 0h12v24H26z"/><path class="logo-fold" d="M24 14v22"/></svg><span class="logo-type"><span class="logo-word">MANGA</span><span class="logo-subtitle">COMIC CLUB</span></span></a>
+      <p class="header-message">Storie da collezionare.<br><strong>Nuovi mondi da esplorare.</strong></p>
+      <div class="header-actions catalog-header-actions">
+        <label class="header-search">
+          <span class="visually-hidden">Cerca nel catalogo</span>
+          <input id="catalog-search" type="search" placeholder="Cerca nel catalogo…" autocomplete="off">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </label>
+        <button class="header-icon" type="button" data-open-account aria-label="Apri account" title="Apri account">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <button id="open-favorites" class="header-icon" type="button" aria-label="Preferiti, 0 manga" title="Preferiti" aria-haspopup="dialog" aria-controls="favorites-dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+          <span id="favorites-count" class="favorites-count" aria-hidden="true" hidden>0</span>
+        </button>
+        <button id="open-cart" class="header-icon cart-icon" type="button" aria-label="Carrello, 0 articoli" title="Carrello" aria-haspopup="dialog" aria-controls="cart-dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+          <span id="cart-count" class="cart-count" aria-hidden="true" hidden>0</span>
+        </button>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <div class="container">
+        <details class="mobile-menu">
+          <summary>Menu e ricerca <span aria-hidden="true">☰</span></summary>
+          <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="catalogo.html" aria-current="page">Catalogo</a>
+            <a href="action-figures.html">Figures</a>
+            <a href="giochi.html">Giochi</a>
+          </div>
+        </details>
+        <ul class="desktop-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalogo.html" aria-current="page">Catalogo</a></li>
+          <li><a href="action-figures.html">Figures</a></li>
+          <li><a href="giochi.html">Giochi</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenuto">
+    <section class="catalog-intro manga-intro">
+      <div class="container catalog-intro-inner">
+        <div class="intro-art intro-covers" aria-hidden="true">
+          <img src="img/copertine/gintama.webp" alt="" width="200" height="300">
+          <img src="img/copertine/bleach.webp" alt="" width="200" height="300">
+          <img src="img/copertine/naruto-il-mito.webp" alt="" width="200" height="300">
+          <img src="img/copertine/kenshin.webp" alt="" width="200" height="300">
+        </div>
+        <h1>Storie che<br>lasciano il segno.</h1>
+        <p>Una selezione di serie manga dal primo volume: trova il tuo prossimo mondo da leggere.</p>
+        <div class="catalog-meta"><span id="catalog-series-count">30 SERIE</span><span>VOL. 1 IN EVIDENZA</span><span>AGGIORNAMENTO DEMO</span></div>
+      </div>
+    </section>
+
+    <section class="releases-section" id="novita" aria-labelledby="releases-title">
+      <div class="container section">
+        <div class="section-heading">
+          <div><h2 id="releases-title">Novità</h2></div>
+          <button class="motion-toggle" type="button" data-toggle-marquee aria-controls="releases-track">Pausa</button>
+        </div>
+        <div class="releases-viewport" role="region" aria-roledescription="carosello" aria-label="Manga in novità">
+          <div class="releases-track" id="releases-track">
+            <a class="release-card" href="#catalog-product-1">
+              <img src="https://mangayo.it/1729-large_default/jujutsu-kaisen-1.jpg" alt="Copertina di Jujutsu Kaisen Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Jujutsu Kaisen Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#catalog-product-2">
+              <img src="https://mangaverse.it/cdn/shop/files/chainsaw-man-vol-1-panini-planet-manga-italiano.webp?v=1771409519&amp;width=1920" alt="Copertina di Chainsaw Man Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Chainsaw Man Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#catalog-product-3">
+              <img src="https://arice.leggere.it/arimg.ashx?e=9788828742470&amp;k=sb&amp;w=500&amp;h=800" alt="Copertina di Naruto il Mito Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Naruto il Mito Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#catalog-product-4">
+              <img src="https://mycomics.it/wp-content/uploads/sites/16/2022/11/FUMBLEACH0001.jpg" alt="Copertina di Bleach Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Bleach Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#catalog-product-5">
+              <img src="https://covers.openlibrary.org/b/id/10193955-L.jpg" alt="Copertina di Spy x Family Vol. 1" loading="lazy">
+              <span>PLANET MANGA</span><h3>Spy x Family Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#catalog-product-6">
+              <img src="https://covers.openlibrary.org/b/id/14554208-L.jpg" alt="Copertina di Dandadan Vol. 1" loading="lazy">
+              <span>PLANET MANGA</span><h3>Dandadan Vol. 1</h3>
+            </a>
+          </div>
+          <button class="releases-arrow releases-prev" id="releases-prev" type="button" aria-label="Scorri alle copertine precedenti" aria-controls="releases-track">←</button>
+          <button class="releases-arrow releases-next" id="releases-next" type="button" aria-label="Scorri alle copertine successive" aria-controls="releases-track">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container catalog-section" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <div><h2 id="catalog-title">Il catalogo</h2></div>
+        <div class="catalog-heading-tools">
+          <p class="catalog-note">Copertine locali e da Open Library; disponibilità variabile. Prezzi indicativi.</p>
+          <div class="catalog-filters">
+            <label for="catalog-genre">Genere
+              <select id="catalog-genre">
+                <option value="">Tutti i generi</option>
+                <option value="azione">Azione</option>
+                <option value="avventura">Avventura</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="soprannaturale">Soprannaturale</option>
+                <option value="thriller">Thriller</option>
+                <option value="commedia">Commedia</option>
+                <option value="supereroi">Supereroi</option>
+                <option value="fantascienza">Fantascienza</option>
+                <option value="storico">Storico</option>
+                <option value="romantico">Romantico</option>
+                <option value="sport">Sport</option>
+                <option value="dramma">Dramma</option>
+                <option value="mistero">Mistero</option>
+                <option value="horror">Horror</option>
+                <option value="cucina">Cucina</option>
+                <option value="slice-of-life">Slice of life</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <p id="catalog-status" class="catalog-status" role="status" aria-live="polite"></p>
+      <p id="catalog-covers-status" class="catalog-status" role="status" aria-live="polite"></p>
+      <div class="catalog-grid">
+        <article class="catalog-card" id="catalog-product-1" data-product-id="product-1" data-genre="azione soprannaturale" data-search="jujutsu kaisen sorcery fight stregoneria maledizioni azione soprannaturale" data-description="Yuji Itadori entra nel mondo dell'occulto quando ingerisce un potente oggetto maledetto per salvare i suoi amici. Da quel momento condivide il proprio corpo con Ryomen Sukuna e si unisce agli stregoni della scuola di Tokyo per affrontare le maledizioni.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Jujutsu+Kaisen" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Jujutsu Kaisen">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · SOPRANNATURALE</p><h3>Jujutsu Kaisen</h3><p>Un mondo di maledizioni, stregoni e combattimenti.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Jujutsu+Kaisen" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" id="catalog-product-2" data-product-id="product-2" data-genre="azione soprannaturale" data-search="chainsaw man denji demoni azione soprannaturale" data-description="Per ripagare i debiti lasciati dal padre, Denji lavora come cacciatore di demoni insieme al piccolo Pochita. Un incontro cambia la sua vita e lo trasforma in Chainsaw Man, trascinandolo in un mondo imprevedibile fatto di alleanze, pericoli e desideri molto semplici.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Chainsaw+Man" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Chainsaw Man">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · SOPRANNATURALE</p><h3>Chainsaw Man</h3><p>La vita di Denji cambia quando incontra il demone Pochita.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Chainsaw+Man" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" id="catalog-product-3" data-product-id="product-3" data-genre="azione avventura" data-search="naruto il mito ninja amicizia azione avventura" data-description="Naruto è un giovane ninja emarginato che sogna di diventare Hokage, la guida più rispettata del suo villaggio. Tra missioni, allenamenti e nuove amicizie, dovrà dimostrare il proprio valore e imparare cosa significa proteggere le persone a cui tiene.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Naruto+il+Mito" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Naruto il Mito">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · AVVENTURA</p><h3>Naruto il Mito</h3><p>Il sogno di Naruto: diventare Hokage e guadagnarsi rispetto.</p><p class="catalog-price">5,60 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Naruto+il+Mito" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" id="catalog-product-4" data-product-id="product-4" data-genre="azione soprannaturale" data-search="bleach ichigo fantasmi shinigami azione soprannaturale" data-description="Ichigo Kurosaki ha sempre visto i fantasmi, ma la sua vita cambia quando incontra una Shinigami e ottiene i suoi poteri. Costretto a proteggere la sua famiglia e la città dagli Hollow, scopre un universo nascosto popolato da spiriti e combattenti.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Bleach" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Bleach">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · SOPRANNATURALE</p><h3>Bleach</h3><p>Ichigo vede i fantasmi e scopre il mondo degli shinigami.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Bleach" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" id="catalog-product-5" data-product-id="product-5" data-genre="azione commedia" data-search="spy x family spionaggio famiglia commedia azione" data-description="Per una missione segreta, la spia Loid Forger deve costruire una famiglia di copertura. Adotta Anya, una bambina telepatica, e sposa Yor, che nasconde la propria attività di assassina: nessuno conosce i segreti degli altri, ma insieme iniziano a sembrare una vera famiglia.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Spy+x+Family" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Spy x Family">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · COMMEDIA</p><h3>Spy x Family</h3><p>Una famiglia fuori dal comune tra missioni segrete e vita quotidiana.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Spy+x+Family" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" id="catalog-product-6" data-product-id="product-6" data-genre="azione soprannaturale" data-search="dandadan yokai alieni azione soprannaturale" data-description="Momo crede negli spiriti, mentre Okarun è convinto dell'esistenza degli alieni. Per dimostrare chi ha ragione, i due si ritrovano coinvolti in eventi paranormali e acquisiscono capacità fuori dal comune. Una corsa folle tra yokai, extraterrestri e nuove amicizie.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Dandadan" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Dandadan">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · SOPRANNATURALE</p><h3>Dandadan</h3><p>Alieni, yokai e avventure imprevedibili si incontrano.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Dandadan" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-7" data-genre="azione commedia" data-search="sakamoto days azione commedia assassini" data-description="Taro Sakamoto era il sicario più temuto, ma ha lasciato quella vita per dedicarsi alla famiglia e al suo negozio. La tranquillità dura poco: vecchi rivali e nuove minacce lo raggiungono, dando inizio a scontri spettacolari e situazioni comiche.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Sakamoto+Days" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Sakamoto Days">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · COMMEDIA</p><h3>Sakamoto Days</h3><p>Un ex sicario ha lasciato tutto per una tranquilla vita di famiglia.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Sakamoto+Days" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-8" data-genre="azione fantasy" data-search="kaiju no 8 mostri difesa azione fantasy" data-description="Kafka Hibino lavora nella squadra che ripulisce le città dai resti dei kaiju, ma sogna ancora di unirsi alle Forze di Difesa. Dopo una trasformazione inattesa, si ritrova legato proprio ai mostri che minacciano il Giappone e deve trovare il modo di realizzare il suo obiettivo.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Kaiju+No.+8" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Kaiju No. 8">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · FANTASY</p><h3>Kaiju No. 8</h3><p>Un uomo comune affronta mostri giganteschi e una nuova missione.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Kaiju+No.+8" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-10" data-genre="azione fantasy" data-search="berserk guts dark fantasy spada azione" data-description="In un mondo medievale segnato da guerre e creature mostruose, il guerriero Guts attraversa terre ostili con la sua enorme spada. Il suo cammino si intreccia con quello di Griffith e della Squadra dei Falchi, dando vita a una saga dark fantasy intensa e drammatica.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Berserk" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Berserk">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · FANTASY</p><h3>Berserk</h3><p>Il viaggio oscuro di Guts in un mondo crudele e fantastico.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Berserk" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-11" data-genre="azione fantasy" data-search="attack on titan attacco dei giganti titani azione fantasy" data-description="L'umanità vive al riparo di enormi mura, minacciata dai Titani, creature che divorano gli esseri umani. Dopo un attacco devastante, Eren, Mikasa e Armin si uniscono all'esercito per combattere e scoprire cosa si nasconde oltre le mura.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Attack+on+Titan" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di L'attacco dei giganti">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · FANTASY</p><h3>L'attacco dei giganti</h3><p>La lotta per sopravvivere dietro le mura che proteggono l'umanità.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Attack+on+Titan" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-12" data-genre="azione commedia" data-search="one punch man saitama supereroi azione commedia" data-description="Saitama è diventato così forte da sconfiggere qualsiasi avversario con un solo pugno. Insieme al suo discepolo Genos affronta mostri e supercriminali, mentre cerca una sfida capace di restituirgli l'entusiasmo per la vita da eroe.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=One+Punch+Man" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di One-Punch Man">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AZIONE · COMMEDIA</p><h3>One-Punch Man</h3><p>Un supereroe imbattibile cerca una sfida all'altezza.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=One+Punch+Man" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-13" data-genre="thriller soprannaturale" data-search="death note thriller soprannaturale quaderno" data-description="Light Yagami trova un quaderno soprannaturale capace di uccidere chiunque vi venga scritto. Convinto di poter creare un mondo senza criminalità, attira l'attenzione del misterioso detective L: inizia così una sfida di astuzia e identità nascoste.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Death+Note" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Death Note">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">THRILLER · SOPRANNATURALE</p><h3>Death Note</h3><p>Un quaderno misterioso cambia il destino di chi lo trova.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Death+Note" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="catalog-card" data-product-id="product-14" data-genre="avventura" data-search="vinland saga vichinghi viaggio avventura" data-description="Nell'Europa dell'epoca vichinga, il giovane Thorfinn cresce tra viaggi, guerre e rivalità. Determinato a confrontarsi con l'uomo responsabile della morte di suo padre, si ritrova coinvolto in una storia che mette alla prova il suo desiderio di vendetta.">
+          <a class="catalog-cover-link" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Vinland+Saga" target="_blank" rel="noopener noreferrer" aria-label="Apri la descrizione di Vinland Saga">
+            <img alt="" loading="lazy" hidden>
+            <span class="catalog-volume">VOL. 01</span>
+          </a>
+          <div class="catalog-card-info"><p class="catalog-label">AVVENTURA</p><h3>Vinland Saga</h3><p>Un'avventura tra vichinghi, rivalità e terre lontane.</p><p class="catalog-price">5,90 €</p><a class="catalog-linkout" href="https://www.panini.it/shp_ita_it/catalogsearch/result/?q=Vinland+Saga" target="_blank" rel="noopener noreferrer">Cerca edizione italiana <span aria-hidden="true">↗</span></a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="manga-dialog" id="manga-dialog" aria-labelledby="manga-dialog-title">
+    <div class="manga-dialog-content">
+      <img class="manga-dialog-cover" id="manga-dialog-cover" alt="">
+      <div class="manga-dialog-copy">
+        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi descrizione">×</button>
+        <p class="catalog-label" id="manga-dialog-genre"></p>
+        <h2 id="manga-dialog-title"></h2>
+        <p class="catalog-price manga-dialog-price" id="manga-dialog-price"></p>
+        <p class="manga-dialog-description" id="manga-dialog-description"></p>
+        <details class="manga-dialog-specs">
+          <summary>Dettagli</summary>
+          <dl>
+            <div><dt>Dimensioni</dt><dd id="manga-dialog-dimensions"></dd></div>
+            <div><dt>Volumi</dt><dd id="manga-dialog-volumes"></dd></div>
+            <div><dt>Autore</dt><dd id="manga-dialog-author"></dd></div>
+            <div><dt>Casa editrice</dt><dd id="manga-dialog-publisher"></dd></div>
+          </dl>
+        </details>
+        <details class="manga-reviews">
+          <summary>Recensioni</summary>
+          <p class="manga-review-summary" id="manga-review-summary" aria-live="polite"></p>
+          <div class="manga-review-content">
+            <ul class="manga-review-list" id="manga-review-list"></ul>
+            <div class="manga-review-auth" id="manga-review-auth" hidden>
+              <p>Accedi al tuo account per lasciare una recensione o valutare questo manga.</p>
+              <button class="button button-primary" id="manga-review-login" type="button">Accedi</button>
+            </div>
+            <form class="manga-review-form" id="manga-review-form">
+                <label for="manga-review-name">Il tuo nome</label>
+                <input id="manga-review-name" name="name" type="text" maxlength="60" required autocomplete="name">
+                <fieldset>
+                  <legend>La tua valutazione</legend>
+                  <div class="manga-review-stars">
+                    <label><input type="radio" name="rating" value="1" required><span aria-hidden="true">★</span><span class="visually-hidden">1 stella</span></label>
+                    <label><input type="radio" name="rating" value="2"><span aria-hidden="true">★</span><span class="visually-hidden">2 stelle</span></label>
+                    <label><input type="radio" name="rating" value="3"><span aria-hidden="true">★</span><span class="visually-hidden">3 stelle</span></label>
+                    <label><input type="radio" name="rating" value="4"><span aria-hidden="true">★</span><span class="visually-hidden">4 stelle</span></label>
+                    <label><input type="radio" name="rating" value="5"><span aria-hidden="true">★</span><span class="visually-hidden">5 stelle</span></label>
+                  </div>
+                </fieldset>
+                <label for="manga-review-text">La tua recensione</label>
+                <textarea id="manga-review-text" name="review" rows="3" maxlength="1000" required></textarea>
+                <p class="manga-review-status" id="manga-review-status" role="status" aria-live="polite"></p>
+                <button class="add-button" type="submit">Pubblica recensione</button>
+            </form>
+            <p class="manga-review-note">Recensioni dimostrative, salvate solo in questo browser.</p>
+          </div>
+        </details>
+        <div class="manga-dialog-actions">
+          <button class="add-button manga-dialog-cart" id="manga-dialog-cart" type="button" aria-label="Aggiungi questo manga al carrello" title="Aggiungi al carrello">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+          </button>
+        </div>
+        <div class="manga-dialog-cart-confirmation" id="manga-dialog-cart-confirmation" hidden>
+          <p id="manga-dialog-cart-message" role="status" aria-live="polite"></p>
+          <button id="manga-dialog-open-cart" type="button">Vai al carrello</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello">✕</button></div>
+    <p class="cart-disclaimer">Carrello dimostrativo: nessun ordine o pagamento reale.</p>
+    <div id="cart-items"></div>
+    <p class="cart-total">Totale: <strong id="cart-total">0,00 €</strong></p>
+    <div class="cart-actions">
+      <button id="empty-cart" type="button">Svuota carrello</button>
+      <button id="continue-cart" type="button">Continua gli acquisti</button>
+      <button id="checkout-cart" class="button button-primary" type="button">Procedi all'ordine</button>
+    </div>
+    <p id="cart-checkout-status" class="cart-checkout-status" role="status" aria-live="polite"></p>
+  </dialog>
+
+  <footer class="site-footer" id="chi-siamo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="logo" href="index.html" aria-label="Manga Club, pagina iniziale"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><rect class="logo-tile" x="2" y="2" width="44" height="44" rx="8"/><path class="logo-page" d="M10 12h12v24H10zm16 0h12v24H26z"/><path class="logo-fold" d="M24 14v22"/></svg><span class="logo-type"><span class="logo-word">MANGA</span><span class="logo-subtitle">COMIC CLUB</span></span></a>
+          <p>Il tuo spazio dedicato a manga, nuove storie e personaggi da collezionare.</p>
+        </div>
+        <nav class="footer-links" aria-label="Navigazione nel footer">
+          <h2 class="footer-title">Esplora</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Catalogo manga</a></li>
+            <li><a href="action-figures.html">Action figures</a></li>
+            <li><a href="giochi.html">Giochi</a></li>
+            <li><a href="account.html">Il tuo account</a></li>
+          </ul>
+        </nav>
+        <div class="footer-social">
+          <h2 class="footer-title">Seguici</h2>
+          <ul class="social-links" aria-label="Social network">
+            <li><a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="social-icon-outline" x="3.5" y="3.5" width="17" height="17" rx="5"/><circle class="social-icon-outline" cx="12" cy="12" r="4"/><circle cx="17.7" cy="6.7" r="1"/></svg><span>Instagram</span></a></li>
+            <li><a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.3H16l.4-2.9h-2.9V9c0-.8.2-1.4 1.5-1.4h1.6V5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.2v2.9h2.5V21z"/></svg><span>Facebook</span></a></li>
+            <li><a class="social-link" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.2 3h-3.1v11.2a2.6 2.6 0 1 1-2.3-2.6V8.4a5.7 5.7 0 1 0 5.4 5.7V8.4a8 8 0 0 0 4.1 1.1V6.4A4.9 4.9 0 0 1 16.2 3z"/></svg><span>TikTok</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Manga Comic Club</p>
+        <p>Demo indipendente: prezzi indicativi, nessun acquisto o pagamento reale.</p>
+      </div>
+    </div>
+  </footer>
+  <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-dialog-title">
+    <section class="account-panel">
+      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso">✕</button>
+      <h2 id="account-dialog-title">Accedi</h2>
+      <p class="account-demo-note">Accesso demo: <strong>demo@example.test</strong> · password <strong>manga123</strong>. Non è una casella email reale.</p>
+      <form class="account-form" data-account-login>
+        <label for="header-login-email">Indirizzo email</label>
+        <input id="header-login-email" name="email" type="email" autocomplete="email" value="demo@example.test" required>
+        <label for="header-login-password">Password</label>
+        <input id="header-login-password" name="password" type="password" autocomplete="current-password" value="manga123" required>
+        <button class="button button-primary" type="submit">Accedi</button>
+        <p class="account-form-status" role="status" aria-live="polite" hidden></p>
+        <button class="button button-dark" type="button" data-account-logout hidden>Esci</button>
+      </form>
+    </section>
+  </dialog>
+  <div id="notification" class="notification" role="status" aria-live="polite">
+    <span id="notification-message"></span>
+    <button id="notification-cart-link" class="notification-cart-link" type="button" hidden>Vai al carrello</button>
+  </div>
+  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden>↑</button>
+</body>
+</html>

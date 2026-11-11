@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga Club — manga, action figure e giochi</title>
+  <meta name="description" content="Manga Club: novità manga, primi volumi, action figure e giochi di carte ispirati ai tuoi mondi preferiti.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/ricerca-mobile.js" defer></script>
+  <script src="js/carrello.js" defer></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+  <script src="js/account-auth.js" defer></script>
+  <script src="js/account-modal.js" defer></script>
+  <script src="js/favorites.js" defer></script>
+  <script src="js/cover-fallback.js" defer></script>
+  <script src="js/movimento.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <!-- INTESTAZIONE: logo, messaggio e collegamenti -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Manga Club, pagina iniziale"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><rect class="logo-tile" x="2" y="2" width="44" height="44" rx="8"/><path class="logo-page" d="M10 12h12v24H10zm16 0h12v24H26z"/><path class="logo-fold" d="M24 14v22"/></svg><span class="logo-type"><span class="logo-word">MANGA</span><span class="logo-subtitle">COMIC CLUB</span></span></a>
+      <p class="header-message">Un mondo di storie.<br><strong>La tua prossima passione.</strong></p>
+      <div class="header-actions">
+        <label class="header-search">
+          <span class="visually-hidden">Cerca un prodotto</span>
+          <input id="search" type="search" placeholder="Cerca nel catalogo…" autocomplete="off">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </label>
+        <button class="header-icon" type="button" data-open-account aria-label="Apri account" title="Apri account">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <button id="open-favorites" class="header-icon" type="button" aria-label="Preferiti, 0 manga" title="Preferiti" aria-haspopup="dialog" aria-controls="favorites-dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+          <span id="favorites-count" class="favorites-count" aria-hidden="true" hidden>0</span>
+        </button>
+        <button id="open-cart" class="header-icon cart-icon" type="button" aria-label="Carrello, 0 articoli" title="Carrello" aria-haspopup="dialog" aria-controls="cart-dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+          <span id="cart-count" class="cart-count" aria-hidden="true" hidden>0</span>
+        </button>
+      </div>
+    </div>
+    <!-- details permette di aprire il menu su mobile senza JavaScript -->
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <div class="container">
+        <details class="mobile-menu">
+          <summary>Menu e ricerca <span aria-hidden="true">☰</span></summary>
+          <div class="mobile-links">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="catalogo.html">Catalogo</a>
+            <a href="action-figures.html">Figures</a>
+            <a href="giochi.html">Giochi</a>
+          </div>
+        </details>
+        <ul class="desktop-links">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="catalogo.html">Catalogo</a></li>
+          <li><a href="action-figures.html">Figures</a></li>
+          <li><a href="giochi.html">Giochi</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main id="contenuto">
+    <h1 class="visually-hidden">Manga Club: manga, action figure e giochi da collezione</h1>
+    <section class="promo-section" id="collezioni" aria-label="Manga in evidenza">
+      <div class="promo-carousel">
+        <button class="promo-arrow promo-prev" id="promo-prev" type="button" aria-label="Manga precedente">←</button>
+        <div class="promo-track" id="promo-track" role="region" aria-roledescription="carosello" aria-label="Manga in evidenza">
+          <article class="promo-slide promo-kaiju promo-clone" aria-hidden="true">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/15098056-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Difendi l'umanità</p><h2>Kaiju No. 8</h2><p>Kafka affronta mostri giganteschi e una nuova missione.</p></div>
+          </article>
+          <article class="promo-slide promo-dragon-ball" role="group" aria-roledescription="slide" aria-label="1 di 9: Dragon Ball">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/14859007-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy">
+              <p class="promo-tag">L'avventura leggendaria</p>
+              <h2>Dragon Ball</h2>
+              <p>Un viaggio epico alla ricerca delle sette sfere del drago.</p>
+            </div>
+          </article>
+          <article class="promo-slide promo-jujutsu" role="group" aria-roledescription="slide" aria-label="2 di 9: Jujutsu Kaisen">
+            <img class="promo-art" src="https://mangayo.it/1729-large_default/jujutsu-kaisen-1.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy">
+              <p class="promo-tag">Sfida le maledizioni</p>
+              <h2>Jujutsu Kaisen</h2>
+              <p>Stregoni, misteri e combattimenti mozzafiato.</p>
+            </div>
+          </article>
+          <article class="promo-slide promo-chainsaw" role="group" aria-roledescription="slide" aria-label="3 di 9: Chainsaw Man">
+            <img class="promo-art" src="https://mangaverse.it/cdn/shop/files/chainsaw-man-vol-1-panini-planet-manga-italiano.webp?v=1771409519&amp;width=1920" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Libera il demone</p><h2>Chainsaw Man</h2><p>Un patto incredibile cambia per sempre la vita di Denji.</p></div>
+          </article>
+          <article class="promo-slide promo-naruto" role="group" aria-roledescription="slide" aria-label="4 di 9: Naruto">
+            <img class="promo-art" src="https://arice.leggere.it/arimg.ashx?e=9788828742470&amp;k=sb&amp;w=500&amp;h=800" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Il sogno di un ninja</p><h2>Naruto</h2><p>Il viaggio di Naruto per diventare Hokage e conquistare il rispetto del villaggio.</p></div>
+          </article>
+          <article class="promo-slide promo-bleach" role="group" aria-roledescription="slide" aria-label="5 di 9: Bleach">
+            <img class="promo-art" src="https://mycomics.it/wp-content/uploads/sites/16/2022/11/FUMBLEACH0001.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Il mondo degli shinigami</p><h2>Bleach</h2><p>Ichigo scopre i suoi poteri e affronta le anime perdute.</p></div>
+          </article>
+          <article class="promo-slide promo-spy-family" role="group" aria-roledescription="slide" aria-label="6 di 9: Spy x Family">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/10193955-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Una famiglia speciale</p><h2>Spy x Family</h2><p>Una spia, un'assassina e una telepate: una famiglia fuori dal comune.</p></div>
+          </article>
+          <article class="promo-slide promo-dandadan" role="group" aria-roledescription="slide" aria-label="7 di 9: Dandadan">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/14554208-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Alieni, yokai e avventure</p><h2>Dandadan</h2><p>Fenomeni inspiegabili e incontri sorprendenti si intrecciano.</p></div>
+          </article>
+          <article class="promo-slide promo-sakamoto" role="group" aria-roledescription="slide" aria-label="8 di 9: Sakamoto Days">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/12748278-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Il passato non molla</p><h2>Sakamoto Days</h2><p>Un ex sicario protegge la sua tranquilla vita familiare.</p></div>
+          </article>
+          <article class="promo-slide promo-kaiju" role="group" aria-roledescription="slide" aria-label="9 di 9: Kaiju No. 8">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/15098056-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">Difendi l'umanità</p><h2>Kaiju No. 8</h2><p>Kafka affronta mostri giganteschi e una nuova missione.</p></div>
+          </article>
+          <article class="promo-slide promo-dragon-ball promo-clone" aria-hidden="true">
+            <img class="promo-art" src="https://covers.openlibrary.org/b/id/14859007-L.jpg" alt="" aria-hidden="true">
+            <div class="promo-copy"><p class="promo-tag">L'avventura leggendaria</p><h2>Dragon Ball</h2><p>Un viaggio epico alla ricerca delle sette sfere del drago.</p></div>
+          </article>
+        </div>
+        <a class="button button-primary promo-catalog-link" href="catalogo.html">Scopri il catalogo</a>
+        <button class="promo-arrow promo-next" id="promo-next" type="button" aria-label="Manga successivo">→</button>
+      </div>
+      <div class="promo-controls">
+      <div class="promo-pagination" role="group" aria-label="Seleziona manga in evidenza">
+        <button class="promo-dot" type="button" aria-label="Mostra Dragon Ball" aria-current="true"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Jujutsu Kaisen"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Chainsaw Man"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Naruto"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Bleach"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Spy x Family"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Dandadan"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Sakamoto Days"></button>
+        <button class="promo-dot" type="button" aria-label="Mostra Kaiju No. 8"></button>
+      </div>
+      <!-- fuori dal gruppo dei pallini: è un comando diverso e non deve spostarne il centro -->
+      <button class="motion-toggle promo-pause" id="promo-pause" type="button" aria-label="Pausa: scorrimento automatico" title="Pausa">❚❚</button>
+      </div>
+    </section>
+
+    <section class="releases-section" id="novita" aria-labelledby="releases-title">
+      <div class="container section">
+        <div class="section-heading">
+          <div><h2 id="releases-title">Novità</h2></div>
+          <button class="motion-toggle" type="button" data-toggle-marquee aria-controls="releases-track">Pausa</button>
+        </div>
+        <div class="releases-viewport" role="region" aria-roledescription="carosello" aria-label="Manga in novità">
+          <div class="releases-track" id="releases-track">
+            <a class="release-card" href="#product-jjk">
+              <img src="https://mangayo.it/1729-large_default/jujutsu-kaisen-1.jpg" alt="Copertina di Jujutsu Kaisen Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Jujutsu Kaisen Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#product-chainsaw">
+              <img src="https://mangaverse.it/cdn/shop/files/chainsaw-man-vol-1-panini-planet-manga-italiano.webp?v=1771409519&amp;width=1920" alt="Copertina di Chainsaw Man Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Chainsaw Man Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#product-naruto">
+              <img src="https://arice.leggere.it/arimg.ashx?e=9788828742470&amp;k=sb&amp;w=500&amp;h=800" alt="Copertina di Naruto il Mito Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Naruto il Mito Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#product-bleach">
+              <img src="https://mycomics.it/wp-content/uploads/sites/16/2022/11/FUMBLEACH0001.jpg" alt="Copertina di Bleach Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+              <span>PLANET MANGA</span><h3>Bleach Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#product-spy-family">
+              <img src="https://covers.openlibrary.org/b/id/10193955-L.jpg" alt="Copertina di Spy x Family Vol. 1" loading="lazy">
+              <span>PLANET MANGA</span><h3>Spy x Family Vol. 1</h3>
+            </a>
+            <a class="release-card" href="#product-dandadan">
+              <img src="https://covers.openlibrary.org/b/id/14554208-L.jpg" alt="Copertina di Dandadan Vol. 1" loading="lazy">
+              <span>PLANET MANGA</span><h3>Dandadan Vol. 1</h3>
+            </a>
+          </div>
+          <button class="releases-arrow releases-prev" id="releases-prev" type="button" aria-label="Scorri alle copertine precedenti" aria-controls="releases-track">←</button>
+          <button class="releases-arrow releases-next" id="releases-next" type="button" aria-label="Scorri alle copertine successive" aria-controls="releases-track">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="daily-manga-section" aria-labelledby="daily-manga-title">
+      <div class="container section">
+        <div class="section-heading">
+          <div><h2 id="daily-manga-title">Manga della settimana</h2></div>
+        </div>
+        <article class="daily-manga-card">
+          <img class="daily-manga-cover" src="https://mangayo.it/1729-large_default/jujutsu-kaisen-1.jpg" alt="Copertina di Jujutsu Kaisen Vol. 1" loading="lazy" referrerpolicy="no-referrer">
+          <div class="daily-manga-copy">
+            <p class="product-category">PLANET MANGA</p>
+            <h3>Jujutsu Kaisen Vol. 1</h3>
+            <p>Quando Yuji Itadori entra in contatto con un potente oggetto maledetto, viene catapultato in un mondo di stregoni e creature oscure. Un’avventura ricca di azione, misteri e combattimenti mozzafiato.</p>
+            <a class="button button-primary daily-manga-link" href="catalogo.html?details=product-1#catalog-product-1">Scopri di più</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="products-section" id="selezione" aria-labelledby="products-title">
+      <div class="container section">
+        <div class="section-heading"><div><h2 id="products-title">La selezione manga</h2></div><span class="sample-label">Prezzi indicativi, da verificare</span></div>
+        <p id="results-status" role="status" aria-live="polite" hidden></p>
+        <div class="product-grid">
+          <article class="product-card" id="product-jjk" data-product-id="product-1">
+            <div class="product-image"><img class="cover cover-image" src="https://mangayo.it/1729-large_default/jujutsu-kaisen-1.jpg" alt="Copertina italiana di Jujutsu Kaisen Vol. 1" loading="lazy" referrerpolicy="no-referrer"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Jujutsu Kaisen Vol. 1</h3><p class="format">Autore: Gege Akutami</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-chainsaw" data-product-id="product-2">
+            <div class="product-image"><img class="cover cover-image" src="https://mangaverse.it/cdn/shop/files/chainsaw-man-vol-1-panini-planet-manga-italiano.webp?v=1771409519&amp;width=1920" alt="Copertina italiana di Chainsaw Man Vol. 1" loading="lazy" referrerpolicy="no-referrer"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Chainsaw Man Vol. 1</h3><p class="format">Autore: Tatsuki Fujimoto</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-naruto" data-product-id="product-3">
+            <div class="product-image"><img class="cover cover-image" src="https://arice.leggere.it/arimg.ashx?e=9788828742470&amp;k=sb&amp;w=500&amp;h=800" alt="Copertina italiana di Naruto il Mito Vol. 1" loading="lazy" referrerpolicy="no-referrer"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Naruto il Mito Vol. 1</h3><p class="format">Autore: Masashi Kishimoto</p><p class="price">5,60 €</p></div>
+          </article>
+          <article class="product-card" id="product-bleach" data-product-id="product-4">
+            <div class="product-image"><img class="cover cover-image" src="https://mycomics.it/wp-content/uploads/sites/16/2022/11/FUMBLEACH0001.jpg" alt="Copertina italiana di Bleach Vol. 1" loading="lazy" referrerpolicy="no-referrer"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Bleach Vol. 1</h3><p class="format">Autore: Tite Kubo</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-spy-family" data-product-id="product-5">
+            <div class="product-image"><img class="cover cover-image" src="https://covers.openlibrary.org/b/id/10193955-L.jpg" alt="Copertina di Spy x Family Vol. 1" loading="lazy"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Spy x Family Vol. 1</h3><p class="format">Autore: Tatsuya Endo</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-dandadan" data-product-id="product-6">
+            <div class="product-image"><img class="cover cover-image" src="https://covers.openlibrary.org/b/id/14554208-L.jpg" alt="Copertina di Dandadan Vol. 1" loading="lazy"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Dandadan Vol. 1</h3><p class="format">Autore: Yukinobu Tatsu</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-sakamoto" data-product-id="product-7">
+            <div class="product-image"><img class="cover cover-image" src="https://covers.openlibrary.org/b/id/12748278-L.jpg" alt="Copertina di Sakamoto Days Vol. 1" loading="lazy"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Sakamoto Days Vol. 1</h3><p class="format">Autore: Yuto Suzuki</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-kaiju" data-product-id="product-8">
+            <div class="product-image"><img class="cover cover-image" src="https://covers.openlibrary.org/b/id/15098056-L.jpg" alt="Copertina di Kaiju No. 8 Vol. 1" loading="lazy"></div>
+            <div class="product-info"><p class="product-category">PLANET MANGA</p><h3>Kaiju No. 8 Vol. 1</h3><p class="format">Autore: Naoya Matsumoto</p><p class="price">5,90 €</p></div>
+          </article>
+          <article class="product-card" id="product-dragon-ball" data-product-id="product-9">
+            <div class="product-image"><img class="cover cover-image" src="https://covers.openlibrary.org/b/id/14859007-L.jpg" alt="Copertina di Dragon Ball Vol. 1" loading="lazy"></div>
+            <div class="product-info"><p class="product-category">STAR COMICS</p><h3>Dragon Ball Vol. 1</h3><p class="format">Autore: Akira Toriyama</p><p class="price">5,90 €</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="collection-banner container" aria-labelledby="banner-title">
+      <div><h2 id="banner-title">Il prossimo mondo<br>ti aspetta.</h2></div>
+      <nav class="banner-links" aria-label="Reparti del negozio">
+        <a class="button button-dark" href="catalogo.html">Manga</a>
+        <a class="button button-dark" href="action-figures.html">Action figure</a>
+        <a class="button button-dark" href="giochi.html">Giochi</a>
+      </nav>
+    </section>
+  </main>
+  <footer class="site-footer" id="chi-siamo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="logo" href="index.html" aria-label="Manga Club, pagina iniziale"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><rect class="logo-tile" x="2" y="2" width="44" height="44" rx="8"/><path class="logo-page" d="M10 12h12v24H10zm16 0h12v24H26z"/><path class="logo-fold" d="M24 14v22"/></svg><span class="logo-type"><span class="logo-word">MANGA</span><span class="logo-subtitle">COMIC CLUB</span></span></a>
+          <p>Il tuo spazio dedicato a manga, nuove storie e personaggi da collezionare.</p>
+        </div>
+        <nav class="footer-links" aria-label="Navigazione nel footer">
+          <h2 class="footer-title">Esplora</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Catalogo manga</a></li>
+            <li><a href="action-figures.html">Action figures</a></li>
+            <li><a href="giochi.html">Giochi</a></li>
+            <li><a href="account.html">Il tuo account</a></li>
+          </ul>
+        </nav>
+        <div class="footer-social">
+          <h2 class="footer-title">Seguici</h2>
+          <ul class="social-links" aria-label="Social network">
+            <li><a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="social-icon-outline" x="3.5" y="3.5" width="17" height="17" rx="5"/><circle class="social-icon-outline" cx="12" cy="12" r="4"/><circle cx="17.7" cy="6.7" r="1"/></svg><span>Instagram</span></a></li>
+            <li><a class="social-link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.3H16l.4-2.9h-2.9V9c0-.8.2-1.4 1.5-1.4h1.6V5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.2v2.9h2.5V21z"/></svg><span>Facebook</span></a></li>
+            <li><a class="social-link" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.2 3h-3.1v11.2a2.6 2.6 0 1 1-2.3-2.6V8.4a5.7 5.7 0 1 0 5.4 5.7V8.4a8 8 0 0 0 4.1 1.1V6.4A4.9 4.9 0 0 1 16.2 3z"/></svg><span>TikTok</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Manga Comic Club</p>
+        <p>Demo indipendente: prezzi indicativi, nessun acquisto o pagamento reale.</p>
+      </div>
+    </div>
+  </footer>
+  <dialog id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello">✕</button></div>
+    <p class="cart-disclaimer">Carrello dimostrativo: nessun ordine o pagamento reale.</p>
+    <div id="cart-items"></div>
+    <p class="cart-total">Totale: <strong id="cart-total">0,00 €</strong></p>
+    <div class="cart-actions">
+      <button id="empty-cart" type="button">Svuota carrello</button>
+      <button id="continue-cart" type="button">Continua gli acquisti</button>
+      <button id="checkout-cart" class="button button-primary" type="button">Procedi all'ordine</button>
+    </div>
+    <p id="cart-checkout-status" class="cart-checkout-status" role="status" aria-live="polite"></p>
+  </dialog>
+  <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-dialog-title">
+    <section class="account-panel">
+      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso">✕</button>
+      <h2 id="account-dialog-title">Accedi</h2>
+      <p class="account-demo-note">Accesso demo: <strong>demo@example.test</strong> · password <strong>manga123</strong>. Non è una casella email reale.</p>
+      <form class="account-form" data-account-login>
+        <label for="header-login-email">Indirizzo email</label>
+        <input id="header-login-email" name="email" type="email" autocomplete="email" value="demo@example.test" required>
+        <label for="header-login-password">Password</label>
+        <input id="header-login-password" name="password" type="password" autocomplete="current-password" value="manga123" required>
+        <button class="button button-primary" type="submit">Accedi</button>
+        <p class="account-form-status" role="status" aria-live="polite" hidden></p>
+        <button class="button button-dark" type="button" data-account-logout hidden>Esci</button>
+      </form>
+    </section>
+  </dialog>
+  <dialog class="manga-dialog" id="manga-dialog" aria-labelledby="manga-dialog-title">
+    <div class="manga-dialog-content">
+      <img class="manga-dialog-cover" id="manga-dialog-cover" alt="">
+      <div class="manga-dialog-copy">
+        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi descrizione">×</button>
+        <p class="catalog-label" id="manga-dialog-genre"></p>
+        <h2 id="manga-dialog-title"></h2>
+        <p class="catalog-price manga-dialog-price" id="manga-dialog-price"></p>
+        <p class="manga-dialog-description" id="manga-dialog-description"></p>
+        <details class="manga-dialog-specs">
+          <summary>Dettagli</summary>
+          <dl>
+            <div><dt>Dimensioni</dt><dd id="manga-dialog-dimensions"></dd></div>
+            <div><dt>Volumi</dt><dd id="manga-dialog-volumes"></dd></div>
+            <div><dt>Autore</dt><dd id="manga-dialog-author"></dd></div>
+            <div><dt>Casa editrice</dt><dd id="manga-dialog-publisher"></dd></div>
+          </dl>
+        </details>
+        <details class="manga-reviews">
+          <summary>Recensioni</summary>
+          <p class="manga-review-summary" id="manga-review-summary" aria-live="polite"></p>
+          <div class="manga-review-content">
+            <ul class="manga-review-list" id="manga-review-list"></ul>
+            <div class="manga-review-auth" id="manga-review-auth" hidden>
+              <p>Accedi al tuo account per lasciare una recensione o valutare questo manga.</p>
+              <button class="button button-primary" id="manga-review-login" type="button">Accedi</button>
+            </div>
+            <form class="manga-review-form" id="manga-review-form">
+                <label for="manga-review-name">Il tuo nome</label>
+                <input id="manga-review-name" name="name" type="text" maxlength="60" required autocomplete="name">
+                <fieldset>
+                  <legend>La tua valutazione</legend>
+                  <div class="manga-review-stars">
+                    <label><input type="radio" name="rating" value="1" required><span aria-hidden="true">★</span><span class="visually-hidden">1 stella</span></label>
+                    <label><input type="radio" name="rating" value="2"><span aria-hidden="true">★</span><span class="visually-hidden">2 stelle</span></label>
+                    <label><input type="radio" name="rating" value="3"><span aria-hidden="true">★</span><span class="visually-hidden">3 stelle</span></label>
+                    <label><input type="radio" name="rating" value="4"><span aria-hidden="true">★</span><span class="visually-hidden">4 stelle</span></label>
+                    <label><input type="radio" name="rating" value="5"><span aria-hidden="true">★</span><span class="visually-hidden">5 stelle</span></label>
+                  </div>
+                </fieldset>
+                <label for="manga-review-text">La tua recensione</label>
+                <textarea id="manga-review-text" name="review" rows="3" maxlength="1000" required></textarea>
+                <p class="manga-review-status" id="manga-review-status" role="status" aria-live="polite"></p>
+                <button class="add-button" type="submit">Pubblica recensione</button>
+            </form>
+            <p class="manga-review-note">Recensioni dimostrative, salvate solo in questo browser.</p>
+          </div>
+        </details>
+        <div class="manga-dialog-actions">
+          <button class="add-button manga-dialog-cart" id="manga-dialog-cart" type="button" aria-label="Aggiungi questo manga al carrello" title="Aggiungi al carrello">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/></svg>
+          </button>
+        </div>
+        <div class="manga-dialog-cart-confirmation" id="manga-dialog-cart-confirmation" hidden>
+          <p id="manga-dialog-cart-message" role="status" aria-live="polite"></p>
+          <button id="manga-dialog-open-cart" type="button">Vai al carrello</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <div id="notification" class="notification" role="status" aria-live="polite">
+    <span id="notification-message"></span>
+    <button id="notification-cart-link" class="notification-cart-link" type="button" hidden>Vai al carrello</button>
+  </div>
+  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden>↑</button>
+</body>
+</html>
