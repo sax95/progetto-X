@@ -13,7 +13,7 @@ favoritesDialog.setAttribute('aria-labelledby', 'favorites-title');
 favoritesDialog.innerHTML = `
   <div class="favorites-heading">
     <h2 id="favorites-title">I tuoi preferiti</h2>
-    <button class="favorites-close" type="button" aria-label="Chiudi i preferiti">×</button>
+    <button class="favorites-close" type="button" aria-label="Chiudi i preferiti"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
   <p class="favorites-status" role="status" aria-live="polite"></p>
   <ul class="favorites-list"></ul>

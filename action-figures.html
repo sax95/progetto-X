@@ -19,6 +19,7 @@
   <script src="js/account-modal.js" defer></script>
   <script src="js/favorites.js" defer></script>
   <script src="js/cover-fallback.js" defer></script>
+  <script src="js/movimento.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -49,7 +50,7 @@
     <nav class="main-nav" aria-label="Navigazione principale">
       <div class="container">
         <details class="mobile-menu">
-          <summary>Menu e ricerca <span aria-hidden="true">☰</span></summary>
+          <summary>Menu e ricerca <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span></summary>
           <div class="mobile-links">
             <a href="index.html">Home</a>
             <a href="catalogo.html">Catalogo</a>
@@ -71,9 +72,9 @@
     <section class="catalog-intro figures-intro">
       <div class="container catalog-intro-inner">
         <div class="intro-art intro-figures" aria-hidden="true">
-          <img src="img/figures/ace-cutout-ai.webp" alt="" width="300" height="375">
-          <img src="img/figures/goku-cutout-ai.webp" alt="" width="300" height="375">
-          <img src="img/figures/gojo-cutout-ai.webp" alt="" width="300" height="375">
+          <img src="img/figures/ace-cutout.webp" alt="" width="300" height="375">
+          <img src="img/figures/goku-cutout.webp" alt="" width="300" height="375">
+          <img src="img/figures/gojo-cutout.webp" alt="" width="300" height="375">
         </div>
         <h1>Personaggi da<br>tenere in posa.</h1>
         <p>Una selezione dimostrativa di action figure ispirate ai mondi manga. Prezzi e modelli sono indicativi, senza vendita reale.</p>
@@ -90,7 +91,7 @@
       <div class="catalog-grid figures-grid">
         <article class="catalog-card product-card" data-product-id="figure-ace" data-maker="Banpresto" data-size="Circa 16 cm" data-description="Una figure dimostrativa ispirata a Portgas D. Ace, il pirata dal potere del fuoco. La posa dinamica e i colori caldi richiamano il suo spirito libero.">
           <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Portgas D. Ace">
-            <img class="cover-image" src="img/figures/ace-cutout-ai.webp" alt="Action figure di Portgas D. Ace di One Piece" loading="lazy"><span class="badge">FIGURE</span>
+            <img class="cover-image" src="img/figures/ace-cutout.webp" alt="Action figure di Portgas D. Ace di One Piece" loading="lazy"><span class="badge">FIGURE</span>
           </button>
           <div class="product-info">
             <p class="product-category">ONE PIECE · PIRATA</p>
@@ -102,7 +103,7 @@
         </article>
         <article class="catalog-card product-card" data-product-id="figure-goku" data-maker="Bandai" data-size="Circa 18 cm" data-description="Una figure dimostrativa ispirata a Son Goku, pronta a entrare in azione. Una posa energica celebra il suo percorso da combattente e il desiderio di superare ogni limite.">
           <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Son Goku">
-            <img class="cover-image" src="img/figures/goku-cutout-ai.webp" alt="Action figure di Son Goku in posa da combattimento" loading="lazy"><span class="badge">FIGURE</span>
+            <img class="cover-image" src="img/figures/goku-cutout.webp" alt="Action figure di Son Goku in posa da combattimento" loading="lazy"><span class="badge">FIGURE</span>
           </button>
           <div class="product-info">
             <p class="product-category">DRAGON BALL · COMBATTENTE</p>
@@ -114,7 +115,7 @@
         </article>
         <article class="catalog-card product-card" data-product-id="figure-naruto" data-maker="Banpresto" data-size="Circa 15 cm" data-description="Una figure dimostrativa ispirata a Naruto Uzumaki, con una posa che richiama la sua determinazione e il sogno di diventare Hokage.">
           <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Naruto Uzumaki">
-            <img class="cover-image" src="img/figures/naruto-cutout-ai.webp" alt="Action figure di Naruto Uzumaki in posa ninja" loading="lazy"><span class="badge">FIGURE</span>
+            <img class="cover-image" src="img/figures/naruto-cutout.webp" alt="Action figure di Naruto Uzumaki in posa ninja" loading="lazy"><span class="badge">FIGURE</span>
           </button>
           <div class="product-info">
             <p class="product-category">NARUTO · NINJA</p>
@@ -126,7 +127,7 @@
         </article>
         <article class="catalog-card product-card" data-product-id="figure-gojo" data-maker="Bandai" data-size="Circa 17 cm" data-description="Una figure dimostrativa ispirata a Satoru Gojo, raffigurato in una posa rilassata che lascia intuire la sua sicurezza e la sua forza fuori dal comune.">
           <button class="catalog-cover-link product-image" type="button" data-open-figure aria-label="Apri i dettagli di Satoru Gojo">
-            <img class="cover-image" src="img/figures/gojo-cutout-ai.webp" alt="Action figure di Satoru Gojo di Jujutsu Kaisen" loading="lazy"><span class="badge">FIGURE</span>
+            <img class="cover-image" src="img/figures/gojo-cutout.webp" alt="Action figure di Satoru Gojo di Jujutsu Kaisen" loading="lazy"><span class="badge">FIGURE</span>
           </button>
           <div class="product-info">
             <p class="product-category">JUJUTSU KAISEN · STREGONE</p>
@@ -144,7 +145,7 @@
     <div class="manga-dialog-content">
       <img class="manga-dialog-cover" id="manga-dialog-cover" alt="">
       <div class="manga-dialog-copy">
-        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi dettagli">×</button>
+        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi dettagli"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
         <p class="catalog-label" id="manga-dialog-genre"></p>
         <h2 id="manga-dialog-title"></h2>
         <p class="catalog-price manga-dialog-price" id="manga-dialog-price"></p>
@@ -200,7 +201,7 @@
   </dialog>
 
   <dialog id="cart-dialog" aria-labelledby="cart-title">
-    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello">✕</button></div>
+    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <p class="cart-disclaimer">Carrello dimostrativo: nessun ordine o pagamento reale.</p>
     <div id="cart-items"></div>
     <p class="cart-total">Totale: <strong id="cart-total">0,00 €</strong></p>
@@ -245,7 +246,7 @@
   </footer>
   <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-dialog-title">
     <section class="account-panel">
-      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso">✕</button>
+      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       <h2 id="account-dialog-title">Accedi</h2>
       <p class="account-demo-note">Accesso demo: <strong>demo@example.test</strong> · password <strong>manga123</strong>. Non è una casella email reale.</p>
       <form class="account-form" data-account-login>
@@ -264,6 +265,6 @@
     <span id="notification-message"></span>
     <button id="notification-cart-link" class="notification-cart-link" type="button" hidden>Vai al carrello</button>
   </div>
-  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden>↑</button>
+  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
 </body>
 </html>

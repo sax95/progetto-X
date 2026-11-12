@@ -19,6 +19,7 @@
   <script src="js/account-modal.js" defer></script>
   <script src="js/favorites.js" defer></script>
   <script src="js/cover-fallback.js" defer></script>
+  <script src="js/movimento.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -49,7 +50,7 @@
     <nav class="main-nav" aria-label="Navigazione principale">
       <div class="container">
         <details class="mobile-menu">
-          <summary>Menu e ricerca <span aria-hidden="true">☰</span></summary>
+          <summary>Menu e ricerca <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span></summary>
           <div class="mobile-links">
             <a href="index.html">Home</a>
             <a href="catalogo.html">Catalogo</a>
@@ -154,7 +155,7 @@
     <div class="manga-dialog-content">
       <img class="manga-dialog-cover" id="manga-dialog-cover" alt="">
       <div class="manga-dialog-copy">
-        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi dettagli">×</button>
+        <button class="manga-dialog-close" id="manga-dialog-close" type="button" aria-label="Chiudi dettagli"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
         <p class="catalog-label" id="manga-dialog-genre"></p>
         <h2 id="manga-dialog-title"></h2>
         <p class="catalog-price manga-dialog-price" id="manga-dialog-price"></p>
@@ -212,7 +213,7 @@
   </dialog>
 
   <dialog id="cart-dialog" aria-labelledby="cart-title">
-    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello">✕</button></div>
+    <div class="cart-heading"><h2 id="cart-title">Il tuo carrello</h2><button id="close-cart" type="button" aria-label="Chiudi carrello"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <p class="cart-disclaimer">Carrello dimostrativo: nessun ordine o pagamento reale.</p>
     <div id="cart-items"></div>
     <p class="cart-total">Totale: <strong id="cart-total">0,00 €</strong></p>
@@ -257,7 +258,7 @@
   </footer>
   <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-dialog-title">
     <section class="account-panel">
-      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso">✕</button>
+      <button class="account-dialog-close" type="button" data-close-account aria-label="Chiudi accesso"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       <h2 id="account-dialog-title">Accedi</h2>
       <p class="account-demo-note">Accesso demo: <strong>demo@example.test</strong> · password <strong>manga123</strong>. Non è una casella email reale.</p>
       <form class="account-form" data-account-login>
@@ -276,6 +277,6 @@
     <span id="notification-message"></span>
     <button id="notification-cart-link" class="notification-cart-link" type="button" hidden>Vai al carrello</button>
   </div>
-  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden>↑</button>
+  <button class="back-to-top" type="button" aria-label="Torna all'inizio" title="Torna all'inizio" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
 </body>
 </html>

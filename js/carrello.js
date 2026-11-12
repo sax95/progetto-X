@@ -104,8 +104,21 @@ window.carrello = (() => {
     $('#notification-message').textContent = message;
     $('#notification-cart-link').hidden = !showCartLink;
     notification.classList.add('visible');
+    hideNotificationLater();
+  }
+  function hideNotificationLater() {
     clearTimeout(notificationTimer);
     notificationTimer = setTimeout(() => notification.classList.remove('visible'), 3500);
+  }
+  // Mentre il mouse o il focus sono sull'avviso, il timer si ferma:
+  // "Vai al carrello" non deve sparire proprio mentre lo si sta raggiungendo.
+  if (notification) {
+    const hold = () => clearTimeout(notificationTimer);
+    const release = () => { if (notification.classList.contains('visible')) hideNotificationLater(); };
+    notification.addEventListener('pointerenter', hold);
+    notification.addEventListener('focusin', hold);
+    notification.addEventListener('pointerleave', release);
+    notification.addEventListener('focusout', release);
   }
 
   function makeButton(label, ariaLabel, focusKey, action) {
@@ -118,11 +131,19 @@ window.carrello = (() => {
     return button;
   }
 
+  let lastBadgeCount = null;
   function render() {
     const count = countItems();
     const badge = $('#cart-count');
+    const grew = lastBadgeCount !== null && count > lastBadgeCount; // non al caricamento della pagina
+    lastBadgeCount = count;
     badge.textContent = String(count);
     badge.hidden = count === 0;
+    // il numero sul carrello "salta" quando cresce: si vede dove è finito il prodotto
+    if (grew && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      badge.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.3)' }, { transform: 'scale(1)' }],
+        { duration: 280, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+    }
     $('#open-cart').setAttribute('aria-label', `Carrello, ${count} ${count === 1 ? 'articolo' : 'articoli'}`);
     if (!dialog) return;
 

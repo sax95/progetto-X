@@ -705,18 +705,9 @@ for (const card of [...releasesTrack.querySelectorAll('.release-card')]) {
   clone.querySelector('img').setAttribute('alt', '');
   releasesTrack.append(clone);
 }
-function scrollReleases(direction) {
-  const animation = releasesTrack.getAnimations()[0];
-  if (!animation) return;
-  const duration = Number(animation.effect.getComputedTiming().duration);
-  const gap = Number.parseFloat(getComputedStyle(releasesTrack).gap);
-  const cardDistance = releasesTrack.querySelector('.release-card').getBoundingClientRect().width + gap;
-  const cycleDistance = releasesTrack.scrollWidth / 2 + gap / 2;
-  const currentTime = Number(animation.currentTime) || 0;
-  animation.currentTime = (currentTime + direction * duration * cardDistance / cycleDistance + duration) % duration;
-}
-releasesPrevious.addEventListener('click', () => scrollReleases(-1));
-releasesNext.addEventListener('click', () => scrollReleases(1));
+// scorriFascia è in js/movimento.js, comune a home e catalogo
+releasesPrevious.addEventListener('click', () => scorriFascia(releasesTrack, -1));
+releasesNext.addEventListener('click', () => scorriFascia(releasesTrack, 1));
 releasesTrack.querySelectorAll('.release-card:not([inert])').forEach(link => {
   link.addEventListener('click', () => {
     search.value = '';
@@ -725,17 +716,7 @@ releasesTrack.querySelectorAll('.release-card:not([inert])').forEach(link => {
   });
 });
 
-
-const backToTop = document.querySelector('.back-to-top');
-function updateBackToTop() {
-  backToTop.hidden = window.scrollY < 240;
-}
-window.addEventListener('scroll', updateBackToTop, { passive: true });
-backToTop.addEventListener('click', () => window.scrollTo({
-  top: 0,
-  behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-}));
-updateBackToTop();
+// il bottone "torna su" è gestito da js/movimento.js, comune a tutte le pagine
 
 const requestedDetailsId = new URLSearchParams(window.location.search).get('details');
 if (requestedDetailsId) {

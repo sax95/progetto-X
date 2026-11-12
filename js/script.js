@@ -80,7 +80,31 @@ function openMangaDetails(product) {
   }));
 }
 
-function addProductToCart(product, fromDetails = false) {
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Conferma sul bottone stesso: "Aggiunto ✓" per poco più di un secondo.
+   Il cambio di testo passa per una breve sfocatura (classe is-swapping nel CSS). */
+const ADD_LABEL = 'Aggiungi al carrello';
+function swapAddLabel(button, text, done) {
+  const label = button.querySelector('.add-button-label');
+  if (reducedMotion()) { label.textContent = text; done?.(); return; }
+  button.classList.add('is-swapping');
+  button.swapTimer = setTimeout(() => {
+    label.textContent = text;
+    button.classList.remove('is-swapping');
+    done?.();
+  }, 120);
+}
+function confirmAdded(button) {
+  clearTimeout(button.swapTimer);
+  clearTimeout(button.resetTimer);
+  swapAddLabel(button, 'Aggiunto ✓', () => button.classList.add('is-added'));
+  button.resetTimer = setTimeout(() => {
+    swapAddLabel(button, ADD_LABEL, () => button.classList.remove('is-added'));
+  }, 1400);
+}
+
+function addProductToCart(product, fromDetails = false, button = null) {
   // dalla scheda di dettaglio il messaggio compare nella scheda stessa, non nell'avviso in basso
   const result = carrello.aggiungi(product.id, { silenzioso: fromDetails });
   if (fromDetails) {
@@ -88,6 +112,7 @@ function addProductToCart(product, fromDetails = false) {
     dialogCartLink.hidden = false;
     dialogCartConfirmation.hidden = false;
   }
+  if (button && result.added) confirmAdded(button);
 }
 
 // Inserisce i comandi dentro le schede già presenti nell'HTML.
@@ -97,10 +122,21 @@ for (const product of products) {
   const addButton = document.createElement('button');
   addButton.type = 'button';
   addButton.className = 'add-button';
-  addButton.textContent = 'Aggiungi al carrello';
-  addButton.addEventListener('click', () => addProductToCart(product));
+  const addLabel = document.createElement('span');
+  addLabel.className = 'add-button-label';
+  addLabel.textContent = ADD_LABEL;
+  addButton.append(addLabel);
+  addButton.addEventListener('click', () => addProductToCart(product, false, addButton));
   actions.append(addButton);
   product.card.querySelector('.product-info').append(actions);
+
+  // Col mouse si apre il dettaglio cliccando in qualsiasi punto della scheda (l'hover la solleva tutta).
+  // Da tastiera resta un solo punto di accesso: la copertina, che ha già role="button".
+  product.card.addEventListener('click', event => {
+    if (event.target.closest('button, a, .product-image')) return;
+    if (window.getSelection().toString()) return; // chi seleziona il testo non vuole aprire niente
+    openMangaDetails(product);
+  });
 
   const cover = product.card.querySelector('.product-image');
   cover.setAttribute('role', 'button');
@@ -137,7 +173,29 @@ function filterProducts() {
   status.hidden = false;
   status.textContent = count ? `${count} prodotti trovati` : 'Nessun prodotto trovato. Prova a cambiare ricerca o filtri.';
 }
-search.addEventListener('input', filterProducts);
+/* La ricerca sta in cima, i risultati molto più in basso: chi scrive non vedrebbe cambiare niente.
+   Sotto il campo compare quindi il numero di risultati con un link; Invio porta ai risultati.
+   (Scorrere da soli non funziona: a ogni lettera il browser riporta la pagina sul campo.) */
+const resultsSection = document.querySelector('#selezione');
+const searchHint = document.createElement('a');
+searchHint.className = 'search-hint';
+searchHint.href = '#selezione';
+search.closest('.header-search').append(searchHint);
+function goToResults() {
+  resultsSection.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+}
+search.addEventListener('input', () => {
+  filterProducts();
+  const query = search.value.trim();
+  const count = products.filter(product => !product.card.hidden).length;
+  searchHint.textContent = count ? `${count} ${count === 1 ? 'risultato' : 'risultati'} · Vedi ↓` : 'Nessun risultato';
+  searchHint.classList.toggle('is-visible', Boolean(query));
+  searchHint.classList.toggle('is-empty', !count);
+});
+search.addEventListener('keydown', event => {
+  if (event.key === 'Enter') { event.preventDefault(); goToResults(); }
+});
+searchHint.addEventListener('click', event => { event.preventDefault(); goToResults(); });
 
 // I link alle schede ripristinano la ricerca per rendere visibile la destinazione.
 document.querySelectorAll('a[href^="#product-"]').forEach(link => {
@@ -160,20 +218,16 @@ for (const card of [...releasesTrack.querySelectorAll('.release-card')]) {
   clone.querySelector('img').setAttribute('alt', '');
   releasesTrack.append(clone);
 }
-function scrollReleases(direction) {
-  const animation = releasesTrack.getAnimations()[0];
-  if (!animation) return;
-  const duration = Number(animation.effect.getComputedTiming().duration);
-  const gap = Number.parseFloat(getComputedStyle(releasesTrack).gap);
-  const cardDistance = releasesTrack.querySelector('.release-card').getBoundingClientRect().width + gap;
-  const cycleDistance = releasesTrack.scrollWidth / 2 + gap / 2;
-  const currentTime = Number(animation.currentTime) || 0;
-  animation.currentTime = (currentTime + direction * duration * cardDistance / cycleDistance + duration) % duration;
-}
-releasesPrevious.addEventListener('click', () => scrollReleases(-1));
-releasesNext.addEventListener('click', () => scrollReleases(1));
+// scorriFascia è in js/movimento.js, comune a home e catalogo
+releasesPrevious.addEventListener('click', () => scorriFascia(releasesTrack, -1));
+releasesNext.addEventListener('click', () => scorriFascia(releasesTrack, 1));
 
 const promoTrack = document.querySelector('#promo-track');
+// Le immagini delle slide 2-9 (circa 900 KB) partono dopo il resto della pagina:
+// la prima slide e le copertine visibili arrivano prima. Il CSS le tiene ferme fino a questa classe.
+const caricaSfondiPromo = () => promoTrack.classList.add('carica-sfondi');
+if (document.readyState === 'complete') caricaSfondiPromo();
+else window.addEventListener('load', caricaSfondiPromo, { once: true });
 const promoCarousel = document.querySelector('.promo-carousel');
 const promoSlides = [...promoTrack.querySelectorAll('.promo-slide:not(.promo-clone)')];
 const allPromoSlides = [...promoTrack.querySelectorAll('.promo-slide')];
@@ -183,7 +237,13 @@ const promoDots = [...document.querySelectorAll('.promo-dot')];
 let activePromoIndex = 0;
 let promoScrollTimer;
 
+let shownPromoIndex = -1;
 function updatePromoControls() {
+  // a ogni cambio di slide l'autoplay riparte da zero (vedi 'promo:change' più sotto)
+  if (shownPromoIndex !== activePromoIndex) {
+    shownPromoIndex = activePromoIndex;
+    promoTrack.dispatchEvent(new Event('promo:change'));
+  }
   promoDots.forEach((dot, index) => {
     if (index === activePromoIndex) {
       dot.setAttribute('aria-current', 'true');
@@ -263,41 +323,45 @@ window.addEventListener('resize', () => {
 scrollToPromo(1, 'auto');
 updatePromoControls();
 
+/* Autoplay: un timer per slide (non setInterval), così dopo un click su freccia o pallino
+   la slide nuova ha sempre i suoi 5 secondi pieni. Il pallino attivo si riempie nello
+   stesso tempo (classe is-playing nel CSS): quando è vuoto, lo scorrimento è fermo. */
 const promoAutoplayDelay = 5000;
+const promoPagination = document.querySelector('.promo-pagination');
+promoPagination.style.setProperty('--promo-delay', `${promoAutoplayDelay}ms`);
 let promoAutoplayTimer;
 // La pausa scelta dall'utente vince su hover, focus e cambio scheda (WCAG 2.2.2).
 let promoPausedByUser = false;
+let promoHeld = false; // mouse sopra o focus dentro il carosello
 const promoPause = document.querySelector('#promo-pause');
+const pauseIcon = promoPause.innerHTML;
+const playIcon = '<svg class="icon icon-solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>';
 function startPromoAutoplay() {
-  clearInterval(promoAutoplayTimer);
-  if (promoPausedByUser || window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.hidden) return;
-  promoAutoplayTimer = setInterval(() => showPromo(activePromoIndex + 1), promoAutoplayDelay);
+  clearTimeout(promoAutoplayTimer);
+  promoPagination.classList.remove('is-playing');
+  if (promoPausedByUser || promoHeld || reducedMotion() || document.hidden) return;
+  void promoPagination.offsetWidth; // fa ripartire da zero il riempimento del pallino
+  promoPagination.classList.add('is-playing');
+  promoAutoplayTimer = setTimeout(() => showPromo(activePromoIndex + 1), promoAutoplayDelay);
 }
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (reducedMotion()) {
   promoPause.hidden = true;
 } else {
   promoPause.addEventListener('click', () => {
     promoPausedByUser = !promoPausedByUser;
-    promoPause.textContent = promoPausedByUser ? '▶' : '❚❚';
+    promoPause.innerHTML = promoPausedByUser ? playIcon : pauseIcon;
     promoPause.title = promoPausedByUser ? 'Riprendi' : 'Pausa';
     promoPause.setAttribute('aria-label', promoPausedByUser ? 'Riprendi: scorrimento automatico' : 'Pausa: scorrimento automatico');
     startPromoAutoplay();
   });
 }
-promoCarousel.addEventListener('pointerenter', () => clearInterval(promoAutoplayTimer));
-promoCarousel.addEventListener('pointerleave', startPromoAutoplay);
-promoCarousel.addEventListener('focusin', () => clearInterval(promoAutoplayTimer));
-promoCarousel.addEventListener('focusout', startPromoAutoplay);
+const holdPromo = held => () => { promoHeld = held; startPromoAutoplay(); };
+promoCarousel.addEventListener('pointerenter', holdPromo(true));
+promoCarousel.addEventListener('pointerleave', holdPromo(false));
+promoCarousel.addEventListener('focusin', holdPromo(true));
+promoCarousel.addEventListener('focusout', holdPromo(false));
+promoTrack.addEventListener('promo:change', startPromoAutoplay);
 document.addEventListener('visibilitychange', startPromoAutoplay);
 startPromoAutoplay();
 
-const backToTop = document.querySelector('.back-to-top');
-function updateBackToTop() {
-  backToTop.hidden = window.scrollY < 240;
-}
-window.addEventListener('scroll', updateBackToTop, { passive: true });
-backToTop.addEventListener('click', () => window.scrollTo({
-  top: 0,
-  behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-}));
-updateBackToTop();
+// il bottone "torna su" è gestito da js/movimento.js, comune a tutte le pagine
