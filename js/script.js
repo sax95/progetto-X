@@ -252,7 +252,14 @@ promoTrack.addEventListener('scrollend', () => {
   }, 0);
   finishPromoScroll(targetIndex);
 });
-window.addEventListener('resize', () => scrollToPromo(activePromoIndex + 1, 'auto'));
+/* Su iPhone la barra di Safari che compare e sparisce lancia 'resize' cambiando solo l'altezza:
+   riallinea il carosello solo se cambia davvero la larghezza, altrimenti salta a metà animazione. */
+let promoTrackWidth = promoTrack.clientWidth;
+window.addEventListener('resize', () => {
+  if (promoTrack.clientWidth === promoTrackWidth) return;
+  promoTrackWidth = promoTrack.clientWidth;
+  scrollToPromo(activePromoIndex + 1, 'auto');
+});
 scrollToPromo(1, 'auto');
 updatePromoControls();
 
