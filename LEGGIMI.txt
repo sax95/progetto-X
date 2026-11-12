@@ -1,7 +1,32 @@
-﻿MANGA CLUB - come aprire il sito
-================================
+﻿MANGA CLUB
+==========
 
-Sito statico in HTML, CSS e JavaScript: non serve nessun server o database.
+A cosa serve
+------------
+Manga Club è la vetrina di un negozio di manga, action figure e giochi.
+Si sfoglia il catalogo, si legge la trama di ogni serie, si mettono i
+prodotti nel carrello o tra i preferiti e si lasciano voti e recensioni.
+È una demo: non si compra niente davvero e non ci sono pagamenti.
+
+Cosa ha di diverso dagli altri siti
+-----------------------------------
+- Le copertine del catalogo arrivano in tempo reale da Open Library,
+  un archivio gratuito di libri. Se una copertina non si carica, al suo
+  posto compare una copertina disegnata con il titolo, non un riquadro
+  vuoto.
+- La grafica imita una pagina di manga stampata: carta, inchiostro nero,
+  retino a puntini, bordi netti e ombre piene, titoli stretti e grandi.
+- Le parti che si muovono da sole (il carosello e la fascia delle novità)
+  hanno un tasto Pausa. Se nel telefono o nel computer è attivo "riduci
+  movimento", restano ferme da sole.
+- Sul telefono il sito è pensato a parte: la ricerca sta dentro il menu,
+  il carosello mette l'immagine sopra e il testo sotto, e il campo di
+  ricerca non fa partire lo zoom automatico dell'iPhone.
+- Per votare con le stelle e scrivere una recensione bisogna accedere,
+  come in un negozio vero. Carrello e preferiti invece funzionano anche
+  senza account.
+
+Il sito è fatto solo con HTML, CSS e JavaScript.
 Si può pubblicare così com'è su GitHub Pages.
 
 Aprire il sito
