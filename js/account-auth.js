@@ -38,7 +38,7 @@ function updateAccountUi(email) {
     button.setAttribute('aria-label', isLoggedIn ? `Account connesso: ${email}` : 'Apri account');
   });
 
-  document.querySelectorAll('.account-demo-note, .account-register-prompt').forEach(element => {
+  document.querySelectorAll('.account-demo-note, section.account-register, .account-register-prompt').forEach(element => {
     element.hidden = isLoggedIn;
   });
 
@@ -126,4 +126,13 @@ loginForms.forEach(form => {
 /* Un'altra scheda ha fatto accesso o uscita. */
 window.addEventListener('storage', event => {
   if (event.key === demoSessionKey) updateAccountUi(event.newValue || '');
+});
+
+/* ---------- Registrazione (solo dimostrativa) ---------- */
+
+document.querySelectorAll('form.account-register').forEach(form => {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    showStatus(form, 'Registrazione dimostrativa: non viene creato un account né inviata un’email.');
+  });
 });

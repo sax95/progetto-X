@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accedi al tuo account Manga Club.">
+  <meta name="description" content="Accedi o registrati su Manga Club. Pagina dimostrativa senza account reali.">
   <title>Account — Manga Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +73,7 @@
       </div>
     </section>
 
-    <section class="container account-content" aria-label="Accedi">
+    <section class="container account-content" aria-label="Accedi o crea un account">
       <p class="account-demo-note">Accesso demo: <strong>demo@example.test</strong> e password <strong>manga123</strong>.</p>
       <div class="account-forms">
         <section class="account-panel" aria-labelledby="login-title">
@@ -89,7 +89,21 @@
           </form>
         </section>
 
-        <section class="account-panel" aria-labelledby="demo-info-title">
+        <section class="account-panel account-register" aria-labelledby="register-title">
+          <h2 id="register-title">Crea un account</h2>
+          <form class="account-form account-register">
+            <label for="register-name">Nome</label>
+            <input id="register-name" name="name" type="text" autocomplete="name" placeholder="Il tuo nome" required>
+            <label for="register-email">Indirizzo email</label>
+            <input id="register-email" name="email" type="email" autocomplete="email" placeholder="nome@esempio.it" required>
+            <label for="register-password">Password</label>
+            <input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="Almeno 8 caratteri" required>
+            <button class="button button-dark" type="submit">Registrati</button>
+            <p class="account-form-status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </section>
+
+        <section class="account-panel account-info" aria-labelledby="demo-info-title">
           <h2 id="demo-info-title">Cosa puoi fare</h2>
           <p>Con l’accesso demo puoi votare i prodotti con le stelle e scrivere recensioni. Carrello e preferiti funzionano anche senza accesso.</p>
           <p class="order-note">Sito dimostrativo: nessun ordine o pagamento reale.</p>
